@@ -1,40 +1,28 @@
 # Homey.ink
 
 Homey.ink is an open-source project for wall-mounted Homey dashboards.
+This fork is primarily aimed at usage on an Raspberry pi or Iphone X
 
-![](https://homey.ink/img/hero-device.png)
+![Homey.ink on Raspberry pi](https://raw.githubusercontent.com/Homeycornelisse/homey.ink/master/assets/devices/Raspberry/Raspberry.png)
+![Homey.ink on Raspberry pi](https://raw.githubusercontent.com/Homeycornelisse/homey.ink/master/assets/devices/Raspberry/iphonex.png)
+![Homey.ink on Raspberry pi](https://raw.githubusercontent.com/Homeycornelisse/homey.ink/master/assets/devices/Raspberry/iphone.png)
 
-While initially created for e-ink readers, due to their low-power consumption, there is no reason why other tablets won't work.
-
-## Theming
-
-A theming system is in place to add support for multiple devices. Currently only Kobo H2O is supported, but pull requests with support for other devices are welcome.
-
-See `/app/css/themes` for the themes' css. To add a theme, simply add a file. The theme will be loaded when visiting `https://app.homey.ink/?theme=<THEME_ID>`.
-
-Current themes:
-
-* Kobo Aura H2O (`?theme=kobo-h2o`)
-* Kobo Aura HD (`?theme=kobo-aura-hd`)
-* Web browser (`?theme=web`)
-
-## Contributing
-
-New themes to add support for devices are accepted when the pull request includes:
-
-* A screenshot of the theme, made on the device (place in `/assets/devices/<THEME_ID>/screenshot.png`)
-* A real-world photo of the device running the theme (place in `/assets/devices/<THEME_ID>/photo.png`)
-
-## Debugging
 
 To run this locally:
 
 ```
 npm i -g serve
-git clone https://github.com/athombv/homey.ink.git
+git clone https://github.com/daneedk/homey.ink
 cd homey.ink
 serve -p 5000 app
 ```
-Then visit `http://localhost:5000/?token=<TOKEN>&theme=<THEME_ID>`.
+
+(Or host it on your own favorite webserver, doing so may need changes to the source you need to do yourself.)
+
+Then visit `http://localhost:5000/?theme=web&lang=en&token=<TOKEN>`
+
+or `http://localhost:5000/?theme=iphone&lang=en&token=<TOKEN>`
+
+Homey.ink is available in German (de), English (en), French (fr), Dutch (nl), Norwegian (no) and Swedish (sv)
 
 > Your token can be acquired by visiting https://homey.ink and looking in the console after logging in.

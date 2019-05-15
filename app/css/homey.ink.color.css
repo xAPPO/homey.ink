@@ -2,18 +2,147 @@
 
 body {
   font-family: Roboto, Helvetica, sans-serif;
-  background: -webkit-linear-gradient(55deg, #009785 0%, #245AA5 50%, #B800E9 100%);
+  background: url(../img/homeyback.png);
   background-attachment: fixed;
-  color: white;
+   background-repeat: auto;
+  background-size: cover;
+ color: white;
+}
+
+.container-dark {
+  background-color: Black;
+  opacity: 0.6;
 }
 
 #text-large:after {
   background: white;
 }
 
-#logo {
-  background-image: url(../img/logo-white.png);  
+#info-panel {
+  width: 75vw;
+  background-image: linear-gradient(to top, #1e3c72 0%, #1e3c72 1%, #2a5298 100%);
+  background-attachment: fixed;
+  border: 1px solid;
+  border-radius: 30px;
+  box-sizing: border-box;
+  z-index: 99;
+  opacity: 0.95;
+ }
+
+#device-panel {
+  background-color: white;
+  border: none;
+  box-shadow: 0 2px 2px rgba(0,0,0,0.2);
 }
+
+#logo {
+  background-image: url(../img/logo-white.png);
+}
+
+#battery-details {
+  background: #07c433;
+  -webkit-mask-image: url(../img/batteryfull.png);
+}
+  #battery-details.alarm {
+   -webkit-mask-image: url(../img/battery.png);
+    Background-color: white;
+  -webkit-border-radius: none;
+  border-radius: none;
+  border: none;
+  color: #FFFFFF;
+  cursor: pointer;
+  -webkit-animation: glowing 1500ms infinite;
+
+  -o-animation: glowing 1500ms infinite;
+  animation: glowing 1500ms infinite;
+}
+@-webkit-keyframes glowing {
+  0%  { background-color: #B20000; -webkit-box-shadow: 0 0 3px #B20000; }
+  50% { background-color: #FF0000; -webkit-box-shadow: 0 0 50px #FF0000; }
+  100% { background-color: #B20000; -webkit-box-shadow: 0 0 3px #B20000; }
+}
+
+#sensor-details {
+  background: #494747;
+  -webkit-mask-image: url(../img/warning.png);
+}
+  #sensor-details.alarm {
+  Background-color: white;
+  -webkit-border-radius: none;
+  border-radius: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  -webkit-animation: glowing 1500ms infinite;
+
+  -o-animation: glowing 1500ms infinite;
+  animation: glowing 1500ms infinite;
+}
+@-webkit-keyframes glowing {
+  0%  { background-color: #B20000; -webkit-box-shadow: 0 0 3px #B20000; }
+  50% { background-color: #FF0000; -webkit-box-shadow: 0 0 50px #FF0000; }
+  100% { background-color: #B20000; -webkit-box-shadow: 0 0 3px #B20000; }
+}
+#sensor-details.fault {
+   Background-color: white;
+  -webkit-border-radius: none;
+  border-radius: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  -webkit-animation: glowing 1500ms infinite;
+
+  -o-animation: glowing 1500ms infinite;
+  animation: glowing 1500ms infinite;
+}
+@-webkit-keyframes glowing {
+  0%  { background-color: #B20000; -webkit-box-shadow: 0 0 3px #B20000; }
+  50% { background-color: #FF0000; -webkit-box-shadow: 0 0 50px #FF0000; }
+  100% { background-color: #B20000; -webkit-box-shadow: 0 0 3px #B20000; }
+}
+
+#notification-details {
+  background:#a0a2a5;
+  -webkit-mask-image: url(../img/notification.png);
+}
+  #notification-details.alarm {
+    Background-color: white;
+  -webkit-border-radius: none;
+  border-radius: none;
+  border: none;
+  color: #FFFFFF;
+  cursor: pointer;
+  -webkit-animation: glowing 1500ms infinite;
+
+  -o-animation: glowing 1500ms infinite;
+  animation: glowing 1500ms infinite;
+  }
+  @-webkit-keyframes glowing {
+  0%  { background-color: #ba9400; -webkit-box-shadow: 0 0 3px #ba9400; }
+  50% { background-color: #ffcc00; -webkit-box-shadow: 0 0 50px #ffcc00; }
+  100% { background-color: #ba9400; -webkit-box-shadow: 0 0 3px #ba9400; }
+  }
+
+#weather-state {
+
+}
+  #weather-state #weather-state-icon {
+    background: white;
+    background-repeat: no-repeat;
+    background-size: 100px;
+  }
+
+#sun-events {
+
+}
+  #sunrise-icon {
+    background: url(../img/sunrise-colo.png) no-repeat center center;
+    background-size: 100%;
+  }
+  #sunset-icon {
+    background: url(../img/sunset-colorpng) no-repeat center center;
+    background-size: 100%;
+  }
 
 .favorites h2 {
   font-weight: 300;
@@ -45,6 +174,31 @@ body {
   border: none;
   box-shadow: 0 2px 2px rgba(0,0,0,0.2);
 }
+  .device.alarm {
+    Background-color: white;
+  -webkit-border-radius: none;
+  border-radius: none;
+  border: none;
+  color: #FFFFFF;
+  cursor: pointer;
+  -webkit-animation: glowing 1500ms infinite;
+
+  -o-animation: glowing 1500ms infinite;
+  animation: glowing 1500ms infinite;
+}
+@-webkit-keyframes glowing {
+  0%  { background-color: #B20000; -webkit-box-shadow: 0 0 3px #B20000; }
+  50% { background-color: #FF0000; -webkit-box-shadow: 0 0 50px #FF0000; }
+  100% { background-color: #B20000; -webkit-box-shadow: 0 0 3px #B20000; }
+}
+
+  .device.push {
+    background-color: grey;
+  }
+  .device .value {
+    color: grey;
+    font-weight: 0.5;
+  }
   .device .name {
     color: black;
     font-weight: 300;

@@ -1,0 +1,45 @@
+{
+    "favorite-flows": "Favoritflöden",
+    "favorite-devices": "Favoritenheter",
+    "text" : {
+        "good": "God ",
+        "evening": "eftermiddag",
+        "afternoon": "förmiddag",
+        "morning": "morgon",
+        "night": "kväll",
+        "today": "I dag är det ",
+        "the": "den",
+        "of": " "
+    },
+    "notification": {
+        "title": "Nya händelser",
+        "nonotification": "Det finns inga händelser"
+    },
+    "weather": {
+        "title": "Väderinformatio",
+        "temperature": "Temperaturen är ",
+        "degrees": " grader, ",
+        "humidity": "luftfuktigheten är ",
+        "pressure": "% och trycket är ",
+        "mbar": " mbar"
+    },
+    "sunevent": {
+        "presunrise": "Solen kommer gå upp ",
+        "postsunrise": "Solen gick upp klockan ",
+        "presunset": " och kommer gå ner ",
+        "postsunset": " och gick ner "
+    },
+    "battery": {
+        "title": "Batteriinformation",
+        "in": ": ",
+        "has": " har ",
+        "left": "% kvar"
+    },
+    "sensor": {
+        "title": "Sensorinformation",
+        "in": " i ",
+        "alarm": " har aktiverat alarm.",
+        "noalarm": " Det är inga sensorer med alarm.",
+        "fault": "Det gick inte att ladda dina enheter. Kontrollera dina enheter och appar i Homeyappen"
+    }
+}

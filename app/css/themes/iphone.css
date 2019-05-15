@@ -1,0 +1,229 @@
+@import url(../homey.ink.color.css);
+
+/*
+ * Theme by: Danee de Kruyff
+ */
+
+h1 {
+  font-size: 3vh;
+}
+
+h2 {
+  font-size: 2vh;
+}
+#container {
+  /*width: 100%;*/
+  height: 100%;
+  padding: 8vw;
+}
+
+#info-panel {
+  padding: 3vh 4vh;
+}
+
+#header {
+  height: 12vh;
+  margin-bottom: 2vh;
+}
+
+.info-message {
+  font-size: 3vh;
+  font-weight: 300;
+}
+
+.info-date {
+  margin-bottom: 1%;
+}
+
+#weather {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 15vw;
+  height: 15vh;
+}
+    #weather-temperature {
+      font-size: 3vh;
+      line-height: 5.2vh;
+	  font-weight: 2px;
+    }
+    #weather-temperature:after {
+      content: "°c";
+    }
+    #weather-state {
+      width: 12vw;
+      height: 12vh;
+      padding-left: 0vw;
+      padding-right: 0vw;
+      text-align: left;
+      top: -6vh;
+    }
+      #weather-state #weather-state-icon {
+        width: 17vw;
+        height: 17vh;
+        left: 0vw;
+        background-size: 17vw 17vh;;
+      }
+
+#text {
+  position: absolute;
+  left: 20vw;
+  right: 20vw;
+  height: 20vh;
+  top: 12vh;
+  visibility: hidden;
+}
+  #text-large {
+    font-weight: 250;
+    font-size: 3vh;
+    margin-top: .5vh;
+  }
+  #text-large:after {
+    font-weight: 150;
+    width: 5vw;
+    margin: 1vh auto;
+  }
+  #text-small {
+    font-size: 1.5vh;
+  }
+
+#logo {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 10vh;
+  height: 10vh;
+}
+
+#details {
+  right: 17vh;;
+  width: 3vh;
+  height: 3vh;
+}
+  #battery-details {
+    width: 4vh;
+    height: 4vh;
+    margin-top: 0.3vh;
+    margin-left: 3vh;
+  }
+  #sensor-details {
+    width: 4vh;
+    height: 4vh;
+    margin-left: 3vh;
+  }
+  #notification-details { 
+    width: 4vh;
+    height: 4vh;
+    margin-top: 0.3vh;
+    margin-left: 3vh;
+  }
+
+.favorites {
+  position: static;
+  left: 0;
+  right: 0;
+}
+  .favorites-inner {
+    white-space: normal;
+    -webkit-mask-image: none;
+  }
+  .favorites h2 {
+    display: block;
+    width: 300px;
+    font-size: 1.6vh;
+    margin-bottom: .8vh;
+    text-transform: uppercase;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    opacity: 0.3;
+  }
+  .favorites h2:after {
+    display: none;
+  }
+    .favorites h2 span {
+      flex-shrink: 0;
+      margin-right: 1vw;
+    }
+    .favorites h2:after {
+      content: "";
+      display: block;
+      width: 150px;
+      vertical-align: center;
+      height: 1px;
+      background: white;
+    }
+
+#flows {
+  margin-bottom: 2vh;
+}
+  .flow {
+    height: 5.6vh;
+    margin-bottom: 0;
+    border-radius: 5.6vh;
+  }
+  .flow.running:before {
+    font-size: 2.6vh;
+    line-height: 5.6vh;
+  }
+    .flow .play {
+      width: 5.6vh;
+      height: 5.6vh;
+  }
+    .flow .name {
+      font-weight: 260;
+      height: 5.6vh;
+      line-height: 5.6vh;
+      font-size: 2.2vh;
+      padding: 0 2.4vh;
+      padding-right: 3.2vh;
+      max-width: 40vw;
+    }
+
+#devices {
+  position: static;
+}
+  .device {
+    width: 15vh;
+    height: 15vh;
+    padding: 1.6vh;
+    margin-right: 2.4vh;
+    margin-bottom: 2.4vh;
+    border-radius: 2.4vh;
+  }
+    .device .icon {
+      position: absolute;
+      top: 1.6vh;
+      left: 1.6vh;
+      width: 3.4vh;
+      height: 3.4vh;
+    }
+    .device .value {
+      position: absolute;
+      top: 2.4vh;
+      right: 1vh;
+      font-size: 3vh;
+      font-weight: 300;
+      line-height: 3.4vh;
+      width: auto;
+      height: auto;
+      max-height: 5.6vh;
+    }
+
+    #decimal {
+      font-size: 2.4vh;
+    }
+    .device .name {
+      position: absolute;
+      bottom: 1.6vh;
+      left: 1.6vh;
+      right: 1.6vh;
+      font-size: 2.2vh;
+      font-weight: 300;
+      line-height: 2.8vh;
+      width: auto;
+      height: auto;
+      max-height: 5.6vh;
+    }

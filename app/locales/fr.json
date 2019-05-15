@@ -1,0 +1,45 @@
+{
+    "favoriteflows": "Flux préférés",
+    "favoritedevices": "Appareils favoris",
+    "text" : {
+        "good": "Bonne ",
+        "evening": "soirée",
+        "afternoon": "après-midi",
+        "morning": "matinée",
+        "night": "nuit",
+        "today": " Aujourd'hui nous sommes ",
+        "the": "le",
+        "of": "de"
+    },
+    "notification": {
+        "title": "Notifications récentes",
+        "nonotification": "Pas de nouvelles notifications"
+    },
+    "weather": {
+        "title": " Information météo pour ",
+        "temperature": "La température actuelle est ",
+        "degrees": " degrés, ", 
+        "humidity": "le taux d'humidité est de ",
+        "pressure": "% et la pression atmosphérique est de ",
+        "mbar": " mbar"
+    },
+    "sunevent": {
+        "presunrise": "Le soleil se lèvera à ",
+        "postsunrise": "Le soleil s'est levé à ",
+        "presunset": " et levera à ",
+        "postsunset": " et couchera à "
+    },
+    "battery": {
+        "title": "Informations batteries", 
+        "in": " dans la zone ",
+        "has": " à ",
+        "left": "% de batterie"
+    },
+    "sensor": {
+        "title": "Informations capteurs",
+        "in": " dans la zone ",
+        "alarm": " est en état d'alarme.",
+        "noalarm": " Il n'y a pas de capteur en état d'alarme.",
+        "fault": "There is a problem loading your devices, please check your devices and apps in the Homey app"
+    }
+}
