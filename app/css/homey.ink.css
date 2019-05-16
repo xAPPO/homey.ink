@@ -287,7 +287,7 @@ body {
         }
         .device .value {
           width: 100%;
-          font-size: 28px;
+          font-size: 10px;
           height: 64px;
           line-height: 32px;
           font-weight: 700;
@@ -300,13 +300,19 @@ body {
           font-size: 14px;
           vertical-align: text-top;
         }
+        .device .value.hidden {
+          visibility: hidden;
+        }
         .device .name {
           width: 100%;
-          font-size: 28px;
+          font-size: 20px;
           height: 64px;
           line-height: 32px;
           font-weight: 700;
           overflow: hidden;
           white-space: normal;
           text-overflow: ellipsis;
+        }
+        .device .name.highlight {
+          font-weight: 1000;
         }

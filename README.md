@@ -12,7 +12,7 @@ To run this locally:
 
 ```
 npm i -g serve
-git clone https://github.com/daneedk/homey.ink
+git clone https://github.com/Homeycornelisse/homey.ink
 cd homey.ink
 serve -p 5000 app
 ```

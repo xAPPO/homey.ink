@@ -1,8 +1,8 @@
 @import url(../homey.ink.color.css);
 
 /*
- * Theme by: Danee de Kruyff
- */
+ * Theme by: Danee de Kruyff + mod by Ruud Cornelisse
+ */ 
 
 h1 {
   font-size: 3vh;
@@ -90,13 +90,14 @@ h2 {
 #logo {
   position: absolute;
   top: 0;
-  right: 0;
+  right: 120px;
   width: 10vh;
   height: 10vh;
+  visibility: hidden;
 }
 
 #details {
-  right: 17vh;;
+  right: 5vh;;
   width: 3vh;
   height: 3vh;
 }

@@ -135,14 +135,7 @@ body {
 #sun-events {
 
 }
-  #sunrise-icon {
-    background: url(../img/sunrise-colo.png) no-repeat center center;
-    background-size: 100%;
-  }
-  #sunset-icon {
-    background: url(../img/sunset-colorpng) no-repeat center center;
-    background-size: 100%;
-  }
+  
 
 .favorites h2 {
   font-weight: 300;

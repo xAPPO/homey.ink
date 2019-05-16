@@ -93,7 +93,7 @@ window.addEventListener('load', function() {
   renderText();
   later.setInterval(function(){
     renderText();
-  }, later.parse.text('every 5 mins'));
+  }, later.parse.text('every 1 hour'));
 
   var api = new AthomCloudAPI({
     clientId: CLIENT_ID,
@@ -251,18 +251,17 @@ window.addEventListener('load', function() {
             });
           }
 
-          if ( device.capabilitiesObj.measure_temperature && !device.capabilitiesObj.flora_measure_moisture ) {        
+          if ( device.capabilitiesObj.measure_temperature ) {        
             device.makeCapabilityInstance('measure_temperature', function(value){
               var $device = document.getElementById('device-' + device.id);
               if( $device ) {
-                var $value = document.getElementById('value-' + device.id);
-                
+               
+                var $value = document.getElementById('value:' + device.id + ":measure_temperature");
                 var integer = Math.floor(device.capabilitiesObj.measure_temperature.value)
                 n = Math.abs(device.capabilitiesObj.measure_temperature.value)
                 var decimal = Math.round((n - Math.floor(n))*10)/10 + "-"
                 var decimal = decimal.substring(2,3)
                 $value.innerHTML= integer + ".<span id='decimal'>"+decimal+"°c</span><br />"
-
               }
             });
           }
@@ -271,7 +270,7 @@ window.addEventListener('load', function() {
             device.makeCapabilityInstance('flora_measure_moisture', function(moisture) {
               var $device = document.getElementById('device-' + device.id);
               if( $device) {
-                var $element = document.getElementById('value-' + device.id);
+                var $element = document.getElementById('value:' + device.id +":flora_measure_moisture");
                 $element.innerHTML = Math.round(moisture) + "<span id='decimal'>%</span><br />"
                 if ( moisture < 15 || moisture > 65 ) {
                   $device.classList.add('alarm')
@@ -527,6 +526,61 @@ window.addEventListener('load', function() {
       $icon.style.webkitMaskImage = 'url(https://icons-cdn.athom.com/' + device.iconObj.id + '-128.png)';
       $device.appendChild($icon);
 
+      if (device.capabilitiesObj && !device.capabilitiesObj[device.ui.quickAction]) {
+        itemNr = 0
+        for ( item in device.capabilitiesObj ) {
+
+          capability = device.capabilitiesObj[item]
+          if ( capability.type == "number" && capability.id != 'measure_battery' ) {
+            var $value = document.createElement('div');
+            //$value.id = 'value:' + itemNr + ":" + device.id;
+            $value.id = 'value:' + device.id + ':' + capability.id;
+            $value.title = capability.title
+            $value.classList.add('value');
+            //$value.classList.add(capability.id)
+            if ( itemNr == 0 ) {$value.classList.add('visible')} else {$value.classList.add('hidden')}
+            renderValue($value, capability.id, capability.value, capability.units)
+            $device.appendChild($value)
+            itemNr =itemNr + 1
+          }
+        }
+        if ( itemNr > 0 ) {
+          $device.addEventListener('click', function(){
+            console.log(" ")
+            var itemNrVisible = 0
+            var itemMax = 0
+            var itemNr = 0
+            var showElement = 0
+            for ( item in device.capabilitiesObj ) {
+              capability = device.capabilitiesObj[item]
+              if ( capability.type == "number") {
+                itemMax = itemMax + 1
+              }
+            }
+            for ( item in device.capabilitiesObj ) {
+              capability = device.capabilitiesObj[item]
+              if ( capability.type == "number" && capability.id != 'measure_battery' ) {
+                searchElement = document.getElementById('value:' + device.id + ':' + capability.id)
+                if (itemNr == showElement ) {
+                  elementToShow = searchElement
+                }
+                if ( searchElement.classList.contains('visible') ) {
+                  searchElement.classList.remove('visible')
+                  searchElement.classList.add('hidden')
+                  showElement = itemNr + 1
+                }
+                itemNr =itemNr + 1
+              }
+            }
+            elementToShow.classList.remove('hidden')
+            elementToShow.classList.add('visible')
+            renderName(device,elementToShow)
+          });
+        }
+      }
+
+    /*
+
       var $value = document.createElement('div');
       $value.id = 'value-' + device.id;
       $value.classList.add('value');
@@ -548,8 +602,10 @@ window.addEventListener('load', function() {
       }
 
       $device.appendChild($value);
+      */
 
       var $name = document.createElement('div');
+      $name.id = 'name:' + device.id
       $name.classList.add('name');
       $name.innerHTML = device.name;
       $device.appendChild($name);
@@ -576,6 +632,37 @@ window.addEventListener('load', function() {
     $textSmall.innerHTML = texts.text.today + moment(now).format('dddd[, ]D[ ]MMMM YYYY[.]');
   }
   
+  function renderValue ($value, capabilityId, capabilityValue, capabilityUnits) {
+    if (capabilityId == "measure_temperature" || 
+        capabilityId == "target_temperature" || 
+        capabilityId == "measure_humidity" 
+        ) {
+      var integer = Math.floor(capabilityValue)
+      n = Math.abs(capabilityValue)
+      var decimal = Math.round((n - Math.floor(n))*10)/10 + "-"
+      var decimal = decimal.substring(2,3)
+
+      $value.innerHTML = integer + "<span id='decimal'>" + decimal + capabilityUnits.substring(0,1) + "</span>"
+
+    } else if ( capabilityId == "measure_pressure" ) {
+      $value.innerHTML = Math.round(capabilityValue) + "<br /><sup>" + capabilityUnits + "</sup>"
+    } else {
+      $value.innerHTML = capabilityValue + "<br /><sup>" + capabilityUnits + "</sup>"
+    }
+  }
+
+  function renderName(device, elementToShow) {
+    searchElement = document.getElementById('name:' + device.id)
+    console.log(searchElement)
+    currentName = searchElement.innerHTML;
+    searchElement.classList.add('highlight')
+    searchElement.innerHTML = elementToShow.title
+    setTimeout( function(){ 
+      searchElement.innerHTML = currentName
+      searchElement.classList.remove('highlight')
+    }, 1000);
+  }
+  
   function calculateTOD() {
 
     var d = new Date();
@@ -596,11 +683,11 @@ window.addEventListener('load', function() {
     var min = time[1];
     var sunsetTime = hour+"."+min;
 
-    if ( currentTime < sunriseTime  ) {
+    if ( parseFloat(currentTime,10) < parseFloat(sunriseTime,10)  ) {
       tod = 1;
       dn = "n";
     } 
-    else if ( currentTime < sunsetTime ) {
+    else if ( parseFloat(currentTime,10) < parseFloat(sunsetTime,10) ) {
       tod = 2;
       dn = "";
     } else {
