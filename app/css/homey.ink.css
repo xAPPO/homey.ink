@@ -33,7 +33,7 @@ body {
 
   #info-panel {
     position: absolute;
-    width: 80px;
+    width: 80vw;
     height: 60vh;
     left: 10vw;
     top: 10vh;
@@ -64,8 +64,7 @@ body {
         border-radius: 32px;
         box-sizing: border-box;
         padding: 24px;
-        margin-right: 24px;
-
+        margin-right: 24px; 
         z-index: 98;
         visibility: hidden;
       }
@@ -179,23 +178,24 @@ body {
   }
     .favorites h2 {
       display: block;
-      width: 1000px;
+      width: 100px;
       font-size: 42px;
       font-weight: 700;
       padding-bottom: 12px;
       margin-bottom: 30px;
+     
     }
     .favorites h2:after {
       content: "";
       display: block;
       height: 2px;
+      margin-right: 25px;
       background: linear-gradient(to right, #000000 0%, rgba(0,0,0,0) 100%);
     }
     .favorites-inner {
       font-size: 0;
       overflow-x: hidden;
       white-space: nowrap;
-      overflow: hidden;
       -webkit-mask-image: linear-gradient(to right, #000000 90%, rgba(0,0,0,0) 100%);
     }
 
@@ -207,12 +207,10 @@ body {
         position: relative;
         display: inline-block;
         vertical-align: middle;
-        overflow: hidden;
         white-space: nowrap;
         height: 64px;
         border: 2px solid black;
         border-radius: 64px;
-        overflow: hidden;
         font-size: 0;
         margin-right: 24px;
       }
@@ -257,8 +255,9 @@ body {
 
   }
     .devices {
-      overflow-y: visible;
-    }
+      
+      }
+    
       .device {
         display: inline-block;
         vertical-align: middle;
@@ -270,13 +269,22 @@ body {
         box-sizing: border-box;
         padding: 24px;
         margin-right: 24px;
-
+      
         opacity: 0.5;
       }
       .device.on {
         opacity: 1;
       }
         .device .icon {
+          width: 90px;
+          height: 90px;
+          background: black;
+          margin-bottom: 6px;
+          -webkit-mask-size: contain;
+          -webkit-mask-repeat: no-repeat;
+          -webkit-mask-position: center center;
+        }
+        .device .icon-capability {
           width: 90px;
           height: 90px;
           background: black;

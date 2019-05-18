@@ -1,29 +1,23 @@
 @import url(../homey.ink.color.css);
 
 /*
- * Theme by: Emile Nijssen + mod bij Ruud cornelisse
+ * Theme by: Danee de Kruyff
  */
 
- body {
-  zoom: .8;
-}
-
 #container {
- /*width: 100%*/
+  /*width: 100%;*/
   height: 100%;
-  padding: 2vh;
-  position: fixed;
- 
+  padding: 2vw;
 }
 
 #header {
-  height: 19.5vh;
+  height: 20vh;
   margin-bottom: 2vh;
 }
 
 .info-message {
   font-size: 3.4vh;
-  font-weight: 350;
+  font-weight: 350; 
 }
 
 .info-date {
@@ -34,17 +28,15 @@
   position: absolute;
   left: 0;
   top: 0;
-  width: 15vw;
+  width: 20vw;
   height: 20vh;
 }
     #weather-temperature {
-      font-weight: 250;
-      font-size: 6vh;
-      line-height: 8vh;
-      margin-left: 5vh;
+      font-size: 10vh;
+      line-height: 10vh;
     }
     #weather-temperature:after {
-      content: "°c";
+      content: "°";
     }
     #weather-state {
       width: 12vw;
@@ -52,14 +44,12 @@
       padding-left: 0vw;
       padding-right: 0vw;
       text-align: left;
-      margin-left: 5vh;
     }
-
       #weather-state #weather-state-icon {
-        width: 10vw;
-        height: 10vh;
+        width: 12vw;
+        height: 12vh;
         left: 0vw;
-        background-size: 10vw 10vh;;
+        background-size: 12vw 12vh;;
       }
 
 #sun-events {
@@ -69,7 +59,17 @@
   height: 20vh;
   margin-top: 4px;
   margin-left: 13vw;
-}
+}      
+  #sunrise-icon, #sunset-icon  {
+    width: 6vh;
+    height: 3vh;
+    margin-bottom: 0.7vh;
+  }
+
+  #sunrise-time, #sunset-time {
+    font-size: 2.4vh;
+    line-height: 2.4vh;
+  }
 
 #text {
   position: absolute;
@@ -78,20 +78,17 @@
   height: 20vh;
 }
   #text-large {
-    font-weight: 250;
+    font-weight: 500;
     font-size: 6vh;
     margin-top: 1vh;
   }
-   #text-large:after {
+  #text-large:after {
     font-weight: 300;
     width: 10vw;
     margin: 2vh auto;
   }
   #text-small {
-   font-weight: 250;
     font-size: 3vh;
-    margin-top: 1vh;
-
   }
 
 #logo {
@@ -100,56 +97,49 @@
   right: 0;
   width: 10vh;
   height: 10vh;
-  margin-right: 2vh;
 }
-
+ 
 #details {
   right: 12vh;;
-  width: 5vh;
-  height: 7vh;
-  margin-right: 5vh;
-  margin-top: 2vh
+  width: 10vh;
+  height: 10vh;
 }
-
   #battery-details {
-    width: 5vh;
-    height: 5vh;
+    width: 8vh;
+    height: 8vh;
     margin-top: -1.3vh;
-    margin-right: 5vh;
   }
-  #sensor-details {
-    width: 5vh;
-    height: 5vh;
+  #sensor-details { 
+    width: 7.6vh;
+    height: 8vh;
+    margin-top: -1vh;
   }
-  #notification-details {
-    width: 5vh;
-    height: 5vh;
-
+  #notification-details { 
+    width: 7.6vh;
+    height: 8vh;
+    margin-top: -0.6vh;
   }
 
 .favorites {
   position: static;
   left: 0;
   right: 0;
-  margin-top: 1vh;
 }
   .favorites-inner {
-    position: static;
     white-space: normal;
-    -webkit-mask-image: none;
-   
+    -webkit-mask-image: none;    
   }
   .favorites h2 {
-    position: static;
     display: block;
     width: auto;
     font-size: 2vh;
-    margin-bottom: 2vh;
+    margin-bottom: 1vh;
     text-transform: uppercase;
+    
     display: flex;
     flex-direction: row;
     align-items: center;
-
+    
     opacity: 0.3;
   }
   .favorites h2:after {
@@ -157,33 +147,27 @@
   }
     .favorites h2 span {
       flex-shrink: 0;
-
+      margin-right: 1vw;
     }
     .favorites h2:after {
       content: "";
       display: block;
+      width: 100%;
       vertical-align: middle;
-      height: 2px;
+      height: 1px;
       background: white;
     }
 
 #flows {
-  position: scroll;
-  width: 100%;
-  height: 320px;
-  margin-bottom: 2vh;
-  margin-left: 7vh;
-  margin-top: 5vh;
-  overflow-y: auto;
+  margin-bottom: 4vh;
 }
   .flow {
     height: 7vh;
     margin-bottom: 2vh;
     border-radius: 7vh;
-    cursor: pointer;
   }
   .flow.running:before {
-    font-size: 3.2vh;
+    font-size: 3.2vh;    
     line-height: 7vh;
   }
     .flow .play {
@@ -201,51 +185,35 @@
     }
 
 #devices {
-  position: scroll;
-  width: 100%;
-  height: 500px;
-  margin-top: 3vh;
-  margin-left: 7vh;
-  overflow-y: auto;
-  
+  position: static;
 }
-
   .device {
     width: 20vh;
     height: 20vh;
     padding: 2vh;
-    margin-right: 1.36vw;
-    margin-bottom: 3vh;
+    margin-right: 1.9vh;
+    margin-bottom: 2vh;
     border-radius: 3vh;
-    cursor: pointer;
   }
     .device .icon {
       position: absolute;
-      top: 3vh;
-      left: 3vh;
-      width: 6vh;
-      height: 6vh;
-  }
-      .device .icon-capability {
-        position: absolute;
-        top: 6vh;
-        left: 2.5vh;
-        width: 5vh;
-        height: 5vh;
-      
-  }
+      top: 2vh;
+      left: 2vh;
+      width: 7vh;
+      height: 7vh;
+    }
     .device .value {
       position: absolute;
       top: 3vh;
       right: 2vh;
-      font-size: 3.5vh;
-      font-weight: 250;
+      font-size: 4.2vh;
+      font-weight: 300;
       line-height: 4.2vh;
       width: auto;
       height: auto;
-      max-height: 7vh;
+      max-height: 8vh;
+      text-align: right;
     }
-
 
     #decimal {
       font-size: 3vh;
@@ -255,7 +223,7 @@
       bottom: 2vh;
       left: 2vh;
       right: 2vh;
-      font-size: 2.5vh;
+      font-size: 2.7vh;
       font-weight: 300;
       line-height: 3.5vh;
       width: auto;
@@ -265,4 +233,3 @@
     .device .name.highlight {
       font-weight: 500;
     }
-  

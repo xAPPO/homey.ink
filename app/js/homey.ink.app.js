@@ -22,6 +22,7 @@ window.addEventListener('load', function() {
   var sensorDetails =[];
   var nrMsg = 8;
   var faultyDevice = false;
+  var nameChange = false;
 
   var $favoriteflows = document.getElementById('favorite-flows');
   var $favoritedevices = document.getElementById('favorite-devices');
@@ -81,7 +82,9 @@ window.addEventListener('load', function() {
   })
 
   $sensordetails.addEventListener('click', function() {
-    return renderInfoPanel("s")
+    return renderInfoPanel("s");
+    checkSensorStates()
+
   })
 
   $notificationdetails.addEventListener('click', function() {
@@ -99,6 +102,11 @@ window.addEventListener('load', function() {
     clientId: CLIENT_ID,
     clientSecret: CLIENT_SECRET,
   });
+
+  var theme = getQueryVariable('theme');
+  if ( theme == undefined) {
+    theme = "web";
+  }
   
   var theme = getQueryVariable('theme');
   var $css = document.createElement('link');
@@ -108,13 +116,23 @@ window.addEventListener('load', function() {
   document.head.appendChild($css);
 
   var token = getQueryVariable('token');
-  token = atob(token);
+  if ( token == undefined || token == "undefined" || token == "") {
+    $container.innerHTML ="<br /><br /><br /><br /><center>homeydash.com<br /><br />Please log-in<br /><br /><a href='https://homey.ink'>homey.ink</a></center>"
+    return
+  }
+  try { token = atob(token) }
+  catch(err) {
+    $container.innerHTML ="<br /><br /><br /><br /><center>homeydash.com<br /><br />Token invalid. Please log-in again.<br /><br /><a href='https://homey.ink'>homey.ink</a></center>"
+    return
+  }
   token = JSON.parse(token);
   api.setToken(token);
   
   api.isLoggedIn().then(function(loggedIn) {
     if(!loggedIn)
-      throw new Error('Token Expired. Please log-in again.');
+      $container.innerHTML ="<br /><br /><br /><br /><center>homeydash.com<br /><br />Token Expired. Please log-in again.<br /><br /><a href='https://homey.ink'>homey.ink</a></center>"
+      return
+      //throw new Error('Token Expired. Please log-in again.');
   }).then(function(){
     return api.getAuthenticatedUser();
   }).then(function(user) {
@@ -123,7 +141,6 @@ window.addEventListener('load', function() {
     return homey.authenticate();
   }).then(function(homey_) {
     homey = homey_;
-
     renderHomey();    
     later.setInterval(function(){
       renderHomey();
@@ -547,7 +564,6 @@ window.addEventListener('load', function() {
         if ( itemNr > 0 ) {
           $device.addEventListener('click', function(){
             console.log(" ")
-            var itemNrVisible = 0
             var itemMax = 0
             var itemNr = 0
             var showElement = 0
@@ -563,6 +579,12 @@ window.addEventListener('load', function() {
                 searchElement = document.getElementById('value:' + device.id + ':' + capability.id)
                 if (itemNr == showElement ) {
                   elementToShow = searchElement
+                  if ( capability.iconObj ) {
+                    iconToShow = 'https://icons-cdn.athom.com/' + capability.iconObj.id + '-128.png'
+                  } else {
+                    iconToShow = 'img/capabilities/' + capability.id + '.png'
+                  }
+                  itemNrVisible = itemNr
                 }
                 if ( searchElement.classList.contains('visible') ) {
                   searchElement.classList.remove('visible')
@@ -570,47 +592,34 @@ window.addEventListener('load', function() {
                   showElement = itemNr + 1
                 }
                 itemNr =itemNr + 1
+                }
               }
-            }
-            elementToShow.classList.remove('hidden')
-            elementToShow.classList.add('visible')
-            renderName(device,elementToShow)
-          });
+              $icon = document.getElementById('icon:'+device.id);
+              $iconcapability = document.getElementById('icon-capability:'+device.id);
+              if ( showElement != itemNr ) { 
+                elementToShow.classList.remove('hidden')
+                elementToShow.classList.add('visible')
+                renderName(device,elementToShow)
+                setCookie(device.id,elementToShow.id,1)
+                $icon.style.opacity = 0.4
+                $iconcapability.style.webkitMaskImage = 'url(' + iconToShow + ')';
+                $iconcapability.style.visibility = 'visible';
+              } else {
+                setCookie(device.id,"-",1)
+                $icon.style.opacity = 1
+                $iconcapability.style.visibility = 'hidden';
+              }
+            });
+          }
         }
-      }
 
-    /*
-
-      var $value = document.createElement('div');
-      $value.id = 'value-' + device.id;
-      $value.classList.add('value');
-      if ( device.capabilitiesObj.measure_temperature && device.capabilitiesObj.measure_temperature.value ) {
-        var integer = Math.floor(device.capabilitiesObj.measure_temperature.value)
-        n = Math.abs(device.capabilitiesObj.measure_temperature.value)
-        var decimal = Math.round((n - Math.floor(n))*10)/10 + "-"
-        var decimal = decimal.substring(2,3)
-        $value.innerHTML  = integer + ".<span id='decimal'>"+decimal+"°c</span><br />"
-      }
-      if ( device.capabilitiesObj.flora_measure_moisture && device.capabilitiesObj.flora_measure_moisture.value ) {
-        var moisture = Math.round(device.capabilitiesObj.flora_measure_moisture.value)
-        $value.innerHTML  = moisture + ".<span id='decimal'>%</span><br />"
-        if ( moisture < 15 || moisture > 65 ) {
-          $device.classList.add('alarm')
-        } else {
-          $device.classList.remove('alarm')
-        }
-      }
-
-      $device.appendChild($value);
-      */
-
-      var $name = document.createElement('div');
-      $name.id = 'name:' + device.id
-      $name.classList.add('name');
-      $name.innerHTML = device.name;
-      $device.appendChild($name);
-    });
-  }
+        var $name = document.createElement('div');
+        $name.id = 'name:' + device.id
+        $name.classList.add('name');
+        $name.innerHTML = device.name;
+        $device.appendChild($name);
+      });
+    }
   
   function renderText() {
     var now = new Date();

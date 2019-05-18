@@ -117,7 +117,7 @@ body {
   -o-animation: glowing 1500ms infinite;
   animation: glowing 1500ms infinite;
   }
-  @-webkit-keyframes glowing {
+  @-keyframes glowing {
   0%  { background-color: #ba9400; -webkit-box-shadow: 0 0 3px #ba9400; }
   50% { background-color: #ffcc00; -webkit-box-shadow: 0 0 50px #ffcc00; }
   100% { background-color: #ba9400; -webkit-box-shadow: 0 0 3px #ba9400; }
@@ -127,19 +127,15 @@ body {
 
 }
   #weather-state #weather-state-icon {
-    background: white;
     background-repeat: no-repeat;
     background-size: 100px;
   }
 
-#sun-events {
-
-}
   
-
 .favorites h2 {
   font-weight: 300;
   color: white;
+
 }
 .favorites h2:after {
   background: linear-gradient(to right, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0) 100%);
@@ -166,25 +162,24 @@ body {
   background-color: white;
   border: none;
   box-shadow: 0 2px 2px rgba(0,0,0,0.2);
-}
+ }
   .device.alarm {
     Background-color: white;
-  -webkit-border-radius: none;
-  border-radius: none;
-  border: none;
-  color: #FFFFFF;
-  cursor: pointer;
-  -webkit-animation: glowing 1500ms infinite;
-
-  -o-animation: glowing 1500ms infinite;
-  animation: glowing 1500ms infinite;
-}
-@-webkit-keyframes glowing {
-  0%  { background-color: #B20000; -webkit-box-shadow: 0 0 3px #B20000; }
-  50% { background-color: #FF0000; -webkit-box-shadow: 0 0 50px #FF0000; }
-  100% { background-color: #B20000; -webkit-box-shadow: 0 0 3px #B20000; }
-}
-
+    -webkit-border-radius: none;
+    border-radius: none;
+    border: none;
+    color: #FFFFFF;
+    cursor: pointer;
+    -webkit-animation: glowing 1500ms infinite;
+  
+    -o-animation: glowing 1500ms infinite;
+    animation: glowing 1500ms infinite;
+  }
+  @-webkit-keyframes glowing {
+    0%  { background-color: #B20000; -webkit-box-shadow: 0 0 3px #B20000; }
+    50% { background-color: #FF0000; -webkit-box-shadow: 0 0 50px #FF0000; }
+    100% { background-color: #B20000; -webkit-box-shadow: 0 0 3px #B20000; }
+  }
   .device.push {
     background-color: grey;
   }
@@ -196,3 +191,5 @@ body {
     color: black;
     font-weight: 300;
   }
+  
+  
